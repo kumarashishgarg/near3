@@ -12,12 +12,6 @@ module.exports = {
         uri:
             process.env.MONGOLAB_URI ||
             process.env.COMPOSEMONGO_URL ||
-            'mongodb://testuser:testuser@ds233228.mlab.com:33228/chatbox'
-    },
-
-    basicAuth: {
-        username: 'testuser',
-        password: 'testpass'
-    },
-    externalUrlEndpoint: 'https://reqres.in/api/unknown/2'
+            'mongodb://testuser:testuser@ds231987.mlab.com:31987/chatbox'
+    }
 }
