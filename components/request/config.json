@@ -1,0 +1,34 @@
+{
+	"field": {
+		"validation": [
+			{
+				"name": "context.version",
+				"type": "version"
+			},
+			{
+				"name": "aiProvider.type",
+				"type": "alphanumeric"
+			},
+			{
+				"name": "aiProvider.accessToken",
+				"type": "alphanumeric"
+			},
+			{
+				"name": "aiProvider.sessionId",
+				"type": "hash"
+			},
+			{
+				"name": "data.queryText",
+				"type": "required"
+			},
+			{
+				"name": "context.timestamp",
+				"type": "date"
+			},
+			{
+				"name": "data.orgId",
+				"type": "alphanumeric"
+			}
+		]
+	}
+}

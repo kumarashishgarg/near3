@@ -1,0 +1,425 @@
+
+{
+  "field": {
+    "validation": [{
+        "name": "$.context.timestamp",
+        "type": "MANDATORY"
+      },
+      {
+        "name": "$.aiProvider.accessToken",
+        "type": "MANDATORY,HASH"
+      },
+      {
+        "name": "$.data.orgId",
+        "type": "MANDATORY,ALPHANUM"
+      }
+    ]
+  }
+}
+
+
+REQUIRED
+NUM (1) (1.0)
+HASH (aaa-111-1222asa) 
+ALPHANUM (apaccss12121) 
+DATE()
+
+
+for we will support only AND condition ..
+
+Request Headers
+---------------
+
+Content-Type: application/json
+AUTH_TYPE: OAUTH
+AUTH_TOKEN_TYPE: Bearer
+AUTH_TOKEN: pO0h00ktqVGFbpkz0WyfzLzihl7hHDOqsF6F7ljM8hFmf6HDyT
+
+Request Json
+------------
+
+{
+	"query": "What is weather tomorrow",
+	"accessToken":"1ad63cf8092a4bcd9223e3827a30836d",
+	"sessionId": ""
+}
+
+{
+	"context": {
+		"timestamp": "2017-11-23T19:20:30-05:00",
+		"version": "1.0"
+	},
+	"aiProvider": {
+		"type": "dialogflow",
+		"accessToken": "1ad63cf8092a4bcd9223e3827a30836d",
+		"sessionId": ""
+	},
+	"data": {
+		"orgId": "",
+		"userId": "",
+		"queryText": "What is weather tomorrow"
+	}
+}
+
+Response Json
+-------------
+
+{
+	"context": {
+		"timestamp": "2017-11-23T19:20:30-05:00",
+		"version": "1.0"
+	},
+	"result": {
+		"message": "success",
+		"statusCode": "XYZ123",
+		"error": {
+			"errorType": "",
+			"errorDetails": ""
+		}
+	},
+	"output": {
+		//Rest API Output
+	},
+	"aiResponse": {
+		"aiEngine": "dialogflow",
+		"response": {
+			"id": "b02dc87f-0214-4166-a69f-3275121d5a22",
+			"timestamp": "2017-12-07T15:52:29.271Z",
+			"lang": "en",
+			"result": {
+				"source": "agent",
+				"resolvedQuery": "What is weather i  Delhi",
+				"action": "",
+				"actionIncomplete": true,
+				"parameters": {
+					"date": "",
+					"geo-city": ""
+				},
+				"contexts": [{
+					"name": "weather_dialog_params_geo-city",
+					"parameters": {
+						"date": "",
+						"geo-city": "",
+						"date.original": "",
+						"geo-city.original": ""
+					},
+					"lifespan": 1
+				}, {
+					"name": "weather_dialog_context",
+					"parameters": {
+						"date": "",
+						"geo-city": "",
+						"date.original": "",
+						"geo-city.original": ""
+					},
+					"lifespan": 2
+				}, {
+					"name": "3b855eb8-cee4-4652-a595-b28f2dba1ef3_id_dialog_context",
+					"parameters": {
+						"date": "",
+						"geo-city": "",
+						"date.original": "",
+						"geo-city.original": ""
+					},
+					"lifespan": 2
+				}],
+				"metadata": {
+					"intentId": "3b855eb8-cee4-4652-a595-b28f2dba1ef3",
+					"webhookUsed": "false",
+					"webhookForSlotFillingUsed": "false",
+					"intentName": "weather"
+				},
+				"fulfillment": {
+					"speech": "For which city do you want to know the weather",
+					"messages": [{
+						"type": 0,
+						"speech": "For which city do you want to know the weather"
+					}]
+				},
+				"score": 0.8700000047683716
+			},
+			"status": {
+				"code": 200,
+				"errorType": "success",
+				"webhookTimedOut": false
+			},
+			"sessionId": "a0e419e0-db66-11e7-aca9-09fce1be7e30"
+		}
+	}
+}
+
+
+
+Google 
+Github
+Dialogflow
+Heroku
+
+
+
+
+1. oAuth API on heroku
+2. Query API Request/Response Struture
+3. Request Validator (Param validation, and oAuth validation)
+4. Dialogflow Client
+5. AI Response Parser
+6. Backend Service Selector (from MongoDB)
+7. Backend Service Client (Rest Client)
+8. Output formatter (from MongoDB, verbose will be fetched)
+
+
+
+
+
+
+
+yyyy-MM-dd'T'HH:mm:ssZZZ
+
+
+
+TODO
+[09:56, 12/27/2017] Ashish Amex: -- Timestamp Mandatory .. Epoc (Mili second) - Number validation
+-- verion mandatory - float validation
+-- aiProvider.type - mandatory - alphanum
+-- aiProvider.accesstoken - mandatory - alphanum
+-- aiProvider.sessionId - mandatory - alphanum + "-"
+-- data.queryText - Mandatory - shoould not be empty 
+
+
+
+Response - date that should be epoc 
+
+common response always	
+
+
+SUCESS
+
+Code - SUC000
+
+
+FAIL
+
+
+REQ_VAL
+AI_ERR
+DB_ERR
+SER_ERR
+
+
+Invaliid value for $field
+
+
+{
+    "context": {
+        "timestamp": "2017-12-30T16:01:35.949Z",
+        "version": "1.0"
+    },
+    "result": {
+        "message": "success",
+        "statusCode": 200,
+        "error": {}
+    },
+    "output": {},
+    "aiResponse": {
+        "aiEngine": "dialogflow",
+        "response": {
+            "id": "3fae0d5e-a901-446a-bc8f-da2fd678bfcf",
+            "timestamp": "2017-12-30T16:01:35.949Z",
+            "lang": "en",
+            "result": {
+                "source": "agent",
+                "resolvedQuery": "What is weather dasdadad",
+                "action": "",
+                "actionIncomplete": true,
+                "parameters": {
+                    "date": "",
+                    "geo-city": ""
+                },
+                "contexts": [
+                    {
+                        "name": "weather_dialog_params_geo-city",
+                        "parameters": {
+                            "date": "",
+                            "geo-city": "",
+                            "date.original": "",
+                            "geo-city.original": ""
+                        },
+                        "lifespan": 1
+                    },
+                    {
+                        "name": "weather_dialog_context",
+                        "parameters": {
+                            "date": "",
+                            "geo-city": "",
+                            "date.original": "",
+                            "geo-city.original": ""
+                        },
+                        "lifespan": 2
+                    },
+                    {
+                        "name": "3b855eb8-cee4-4652-a595-b28f2dba1ef3_id_dialog_context",
+                        "parameters": {
+                            "date": "",
+                            "geo-city": "",
+                            "date.original": "",
+                            "geo-city.original": ""
+                        },
+                        "lifespan": 2
+                    }
+                ],
+                "metadata": {
+                    "intentId": "3b855eb8-cee4-4652-a595-b28f2dba1ef3",
+                    "webhookUsed": "false",
+                    "webhookForSlotFillingUsed": "false",
+                    "intentName": "weather"
+                },
+                "fulfillment": {
+                    "speech": "For which city do you want to know the weather",
+                    "messages": [
+                        {
+                            "type": 0,
+                            "speech": "For which city do you want to know the weather"
+                        }
+                    ]
+                },
+                "score": 0.949999988079071
+            },
+            "status": {
+                "code": 200,
+                "errorType": "success",
+                "webhookTimedOut": false
+            },
+            "sessionId": "afd1e150-ed7a-11e7-9a47-75b8b75e375f"
+        }
+    }
+}
+
+
+https://github.com/ctavan/express-validator/issues/413
+
+
+
+{
+    "_id": {
+        "$oid": "5a4df510734d1d089c5a6300"
+    },
+    "name": "weather",
+    "type": "GET",
+    "url": "https://reqres.in/api/unknown/2"
+}
+ 
+
+{
+    "_id": {
+        "$oid": "5a4df530734d1d089c5a630c"
+    },
+    "name": "cricket",
+    "type": "POST",
+    "url": "https://reqres.in/api/unknown/2"
+}
+
+
+
+
+{
+    "name": "weather",
+    "type": "GET",
+    "url": "https://reqres.in/api/unknown/2",
+    "auth_type": {
+      "type": "NO_AUTH",
+      "value": ""
+    }
+},
+
+
+{
+    "name": "weather",
+    "type": "GET",
+    "url": "https://reqres.in/api/unknown/2",
+    "auth_type": {
+      "type": "BASIC"
+      "value": "BASIC 5a4e15f49f8c0221404518dc"
+    },
+    "headers": [{
+        "xyz": 123  
+    }]
+
+}
+
+{
+    "name": "weather",
+    "type": "GET",
+    "url": "https://reqres.in/api/unknown/2",
+    "auth_type": {
+      "type": "OAUTH"
+       "value": "client Id | clientSecret | url"
+    }
+}
+
+{
+	"name": "weather",
+	"type": "GET",
+	"url": "https://reqres.in/api/unknown/2",
+	"auth_type": {
+		"type": "OAUTH",
+		"value": "{'url': 'https://anikets43.auth0.com/oauth/token', 'client_id':'mwNG7dekF14r2uGuyKn0HF4ucpJkPuLN','client_secret':'bhU9qg8G1dGN29WZ30nUI4v5vP5itzZZ3FSAlJA6rcL8g-2zzTAA80RVMawHn_3S','audience':'https://anikets43.auth0.com/api/v2/','grant_type':'client_credentials'}"
+	}
+}
+
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6dHJ1ZSwiaWF0IjoxNTE1ODI0ODg0LCJleHAiOjE1MTU5MTEyODR9.amHKUtaP4Mm_3DWZbaBdMRhLw-mAWVmNyDgu9DT1kqc
+
+'{"client_id":"mwNG7dekF14r2uGuyKn0HF4ucpJkPuLN","client_secret":"bhU9qg8G1dGN29WZ30nUI4v5vP5itzZZ3FSAlJA6rcL8g-2zzTAA80RVMawHn_3S","audience":"https://anikets43.auth0.com/api/v2/","grant_type":"client_credentials"}'
+
+
+
+
+{
+    "_id": {
+        "$oid": "5a4e16077561bf214acab775"
+    },
+    "name": "weather",
+    "type": "GET",
+    "url": "https://reqres.in/api/unknown/2",
+    "auth_type": {
+        "type": "BASIC",
+        "value": "BASIC 5a4e15f49f8c0221404518dc"
+    },
+    "headers": [
+        {
+            "name": "Content_Type",
+            "value": "application/json"
+        },
+         {
+            "name": "x-accessToken",
+            "value": "application/json"
+        }
+    ],
+    "__v": 0
+}
+
+
+{
+    "_id": {
+        "$oid": "5a59f5f3734d1d347182d3f0"
+    },
+    "name": "cricket",
+    "type": "POST",
+    "url": "https://reqres.in/api/unknown/2",
+    "auth_type": {
+        "type": "OAUTH",
+        "value": {
+            "url": "https://anikets43.auth0.com/oauth/token",
+            "client_id": "mwNG7dekF14r2uGuyKn0HF4ucpJkPuLN",
+            "client_secret": "bhU9qg8G1dGN29WZ30nUI4v5vP5itzZZ3FSAlJA6rcL8g-2zzTAA80RVMawHn_3S",
+            "audience": "https://anikets43.auth0.com/api/v2/",
+            "grant_type": "client_credentials"
+        }
+    },
+    "headers": [
+        {
+            "name": "Content_Type",
+            "value": "application/json"
+        }
+    ]
+}
